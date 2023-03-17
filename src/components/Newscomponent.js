@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Newsitem from "./Newsitem";
 import Spinner from "./spinner";
-const API_KEY = process.env.REACT_APP_API_KEY;
+const API_KEY =process.env.REACT_APP_API_KEY1;
 // console.log(process.env.REACT_APP_API_KEY)
 export class Newscomponent extends Component {
   constructor() {
@@ -35,7 +35,7 @@ export class Newscomponent extends Component {
       pageno: goto_page,
       loaded: false,
     });
-    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=45b2bdcf36524b35950bb5e31d2cdba7&page=${goto_page}&pageSize=${this.props.pagesize}`;
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${API_KEY}&page=${goto_page}&pageSize=${this.props.pagesize}`;
     let data = await fetch(url);
     let parsedData = await data.json();
     // console.log(parsedData);
