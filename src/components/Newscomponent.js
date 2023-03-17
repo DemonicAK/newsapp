@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import Newsitem from "./Newsitem";
 import Spinner from "./spinner";
-
+const API_KEY = process.env.REACT_APP_API_KEY;
+// console.log(process.env.REACT_APP_API_KEY)
 export class Newscomponent extends Component {
   constructor() {
     super();
@@ -17,8 +18,9 @@ export class Newscomponent extends Component {
 
   async componentDidMount() {
     this.setState.loaded = false;
+    // console.log(API_KEY)
     // this.loader();
-    let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=45b2bdcf36524b35950bb5e31d2cdba7&pageSize=${this.props.pagesize}`;
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${API_KEY}&pageSize=${this.props.pagesize}`;
     let data = await fetch(url);
     let parsedData = await data.json();
     // console.log(parsedData);
@@ -33,7 +35,7 @@ export class Newscomponent extends Component {
       pageno: goto_page,
       loaded: false,
     });
-    let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=45b2bdcf36524b35950bb5e31d2cdba7&page=${goto_page}&pageSize=${this.props.pagesize}`;
+    let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=45b2bdcf36524b35950bb5e31d2cdba7&page=${goto_page}&pageSize=${this.props.pagesize}`;
     let data = await fetch(url);
     let parsedData = await data.json();
     // console.log(parsedData);
